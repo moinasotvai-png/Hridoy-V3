@@ -18,7 +18,7 @@ module.exports = {
       tl: "Ilagay ang mukha ng isa sa bibig ng cobra",
       ar: "ضع وجه شخص في فم الكوبرا"
     },
-    category: "fun",
+    category: "Tag Fun",
     guide: { en: "{pn} @mention" }
   },
 
