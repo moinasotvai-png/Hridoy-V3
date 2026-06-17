@@ -7,7 +7,7 @@ const userModel = new Schema({
 		unique: true
 	},
 	name: String,
-	gender: String,
+	gender: Number,
 	vanity: String,
 	exp: {
 		type: Number,
@@ -28,6 +28,14 @@ const userModel = new Schema({
 	data: {
 		type: Object,
 		default: {}
+	},
+	premium: {
+		type: Boolean,
+		default: false
+	},
+	premiumRequests: {
+		type: Array,
+		default: []
 	}
 }, {
 	timestamps: true,
