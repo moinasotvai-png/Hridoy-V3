@@ -57,7 +57,7 @@ module.exports = (api, threadModel, userModel, dashBoardModel, globalModel, user
         if (!isAdminBot) {
           const userInfo = await api.getUserInfo(userID);
           const reactorName = userInfo[userID].name;
-          message.send(`Hey, ${reactorName}, \n\nthis isn't for you😡`);
+          message.send(``);
           return;
         }
 
