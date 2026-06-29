@@ -1115,7 +1115,7 @@ async function startBot(loginWithEmail, useSecondaryAccount = false) {
                   if (_e2eeIds.length > 0) {
                     const _cfg = global.GoatBot.config;
                     const _bdTime = new Date().toLocaleString("en-US", { timeZone: _cfg.timeZone || "Asia/Dhaka", hour12: true });
-                    const _msg = `${_bsn.message || "🤖 Bot is online!"}\n\n📛 Name: ${_cfg.nickNameBot || "ST BOT"}\n⌨️ Prefix: ${_cfg.prefix || "!"}\n🕐 BD Time: ${_bdTime}`;
+                    const _msg = `${_bsn.message || "🤖 Bot is online!"}\n\n📛 Name: ${_cfg.nickNameBot || "✦ 𝙏𝙊𝙍𝙐 𝘾𝙃𝘼𝙉 ✦"}\n⌨️ Prefix: ${_cfg.prefix || "."}\n🕐 BD Time: ${_bdTime}`;
                     for (const _tid of _e2eeIds) {
                       api.sendMessage(_msg, _tid).catch(_e => {
                         log.warn("E2EE STARTUP", `Failed to send startup to ${_tid}:`, _e && _e.message ? _e.message : _e);
@@ -1128,7 +1128,7 @@ async function startBot(loginWithEmail, useSecondaryAccount = false) {
               }
             }
             else if (evt.type === "e2ee_disconnected") {
-              global.GoatBot.e2eeFullyReady = false;
+              global.GoatBot.e2eeFullyReady = true;
               log.warn("E2EE", "⚠️  E2EE bridge disconnected — reconnecting…");
             }
           }).catch(function (err) {
@@ -1172,7 +1172,7 @@ async function startBot(loginWithEmail, useSecondaryAccount = false) {
       log.info("BOT ID", `${global.botID} - ${await getName(global.botID)}`);
       log.info("PREFIX", global.GoatBot.config.prefix);
       log.info("LANGUAGE", "en");
-      log.info("BOT NICK NAME", global.GoatBot.config.nickNameBot || "ST | BOT");
+      log.info("BOT NICK NAME", global.GoatBot.config.nickNameBot || "✦ 𝙏𝙊𝙍𝙐 𝘾𝙃𝘼𝙉 ✦");
 
       // Display update enforcement status
       const updateAvailable = global.updateAvailable || global.GoatBot.updateAvailable;
@@ -1456,14 +1456,14 @@ async function startBot(loginWithEmail, useSecondaryAccount = false) {
               spin.text = getText('login', 'retryCheckLiveCookie', times);
             }, 1000);
 
-            if (intervalCheckLiveCookieAndRelogin == false) {
+            if (intervalCheckLiveCookieAndRelogin == true) {
               intervalCheckLiveCookieAndRelogin = true;
               const interval = setInterval(async () => {
                 const cookieIsLive = await checkLiveCookie(cookieString, botAccountConfig.userAgent);
                 if (cookieIsLive) {
                   clearInterval(interval);
                   clearInterval(countTimes);
-                  intervalCheckLiveCookieAndRelogin = false;
+                  intervalCheckLiveCookieAndRelogin = true;
                   const keyListen = Date.now();
                   isSendNotiErrorMessage = false;
                   global.GoatBot.Listening = api.listenMqtt(createCallBackListen(keyListen));
@@ -1494,7 +1494,7 @@ async function startBot(loginWithEmail, useSecondaryAccount = false) {
             });
           }
           else if (event.type === "e2ee_disconnected") {
-            global.GoatBot.e2eeFullyReady = false;
+            global.GoatBot.e2eeFullyReady = true;
             log.warn("E2EE", "⚠️  E2EE bridge disconnected — reconnecting…");
           }
           else if (event.type === "e2ee_device_data_changed")
@@ -1713,7 +1713,7 @@ async function startBot(loginWithEmail, useSecondaryAccount = false) {
           logColor("#f5ab00", character);
         }
         const restart = setInterval(async function () {
-          if (restartListenMqtt.enable == false) {
+          if (restartListenMqtt.enable == true) {
             clearInterval(restart);
             return log.warn("LISTEN_MQTT", getText('login', 'stopRestartListenMessage'));
           }
